@@ -1,16 +1,31 @@
 # Playing-With-Enums-in-Java
 Playing with Enums in Java
 
+
 public class dayEnum {
 
 	public enum Day {
-	    SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
-	    THURSDAY, FRIDAY, SATURDAY;
+	    SUNDAY(1), MONDAY(2), TUESDAY(3), WEDNESDAY(4),
+	    THURSDAY(5), FRIDAY(6), SATURDAY(7);
 	    
+	    int theDate;
+	    
+	    //set the date on instatiation
+	    private Day(int i){
+	    	this.theDate=i;
+	    }
+	    
+	    //this returns the day number as set by the ordinal ( order in which the days were mentioned. It starts at 0 (sunday).)
 	    public int dayNumber()
 	    {
-	    	return this.ordinal();
+	    	return this.ordinal()+1;
 	    }
+	    
+	    //this returns the date as set when the Day Enum is created
+	    public int getTheDate(){
+	    	return this.theDate;
+	    }
+	    
 	}
 	
 	Day d;
@@ -19,7 +34,7 @@ public class dayEnum {
 		return d;
 	}
 
-	
+	//switch statement to handle each day
 	public int numberDay(Day day) {
         switch (day) {
             case MONDAY:
@@ -45,7 +60,6 @@ public class dayEnum {
         }
     }
 }
-
 
 import static org.junit.Assert.*;
 
